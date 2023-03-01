@@ -59,5 +59,11 @@ class Mercury(HardwareLayer):
     def set_position(self, value, address=None):
         self._write_command("MA%d" % value, address)
 
+    def reference(self, type=None, address=None):
+        if type is None:
+            self._write_command("FE ", address)
+        else:
+            self._write_command("FE%d" % type, address)
+
     def move_relative(self, value, address=None):
         self._write_command("MR%d" % value, address)
